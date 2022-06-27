@@ -28,16 +28,28 @@ setInterval(function() {
 
 // 2) display the 10 hour in the workday from 8-5
 
-//var timeBlockP = $("<p>")
+
 
 hours.forEach(function(hour) {
     var timeBlockP = $("<p>")
-    .text(hour);
+        .text(hour)
+        .addClass("hour")
+        var saveButton = $("<button>")
+        .text("save")
+        .addClass("saveBtn")
     console.log("my loop is working");
     $(".container").append(timeBlockP);
+    timeBlockP.append(saveButton);
     console.log(hour);
     
     
    
 });
+
+//change colors
+//if time is before current time, make class .past
+// present .present
+// future .future
+
+
 
