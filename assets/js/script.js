@@ -37,8 +37,17 @@ hours.forEach(function(hour) {
     var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
+    //var hoursLength = hours.length;
+        // for(let hr = 0 ; hr < hoursLength; hr++) {
     var textAreaEl = $("<textarea>")
         .addClass("textArea")
+    
+   
+    //saveButton.className = `options-${i+1}`;
+           
+        
+    // var textAreaEl = $("<textarea>")
+    //     .addClass("textArea"+hoursLength)
 
     console.log("my loop is working");
     $(".container").append(timeBlockP);
@@ -48,10 +57,20 @@ hours.forEach(function(hour) {
     console.log(hour);  
    
 });
-
+//loadTasks();
+// saves text in text area when save button is clicked
 $(".saveBtn").click (function() {
     console.log("<button> was clicked");
+    var hourText = $(".textArea").val();
+    console.log(hourText);
+    localStorage.setItem("hourText", JSON.stringify(hourText));
+    
   });
+
+// var createTask = function(hourText) {
+
+// }
+
 //change colors
 //if time is before current time, make class .past
 // present .present
