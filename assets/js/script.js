@@ -76,5 +76,10 @@ $(".saveBtn").click (function() {
 // present .present
 // future .future
 
-
+var past = moment().subtract(1,"hours")
+var now = moment()
+var future = moment().add(1,"hours")
+console.log(past < now);
+console.log(future > now);
+console.log(past);
 
