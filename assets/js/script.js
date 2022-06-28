@@ -6,7 +6,7 @@
 //      still displays on the screen
 
 // 1) display current day- I can do that in the <p> id currentDay
-console.log("this is working");
+
 var currentDayEl = document.querySelector("#currentDay");
 var containerEl = document.querySelector(".container");
 
@@ -21,6 +21,7 @@ var hours = ['8:00am',
             '4:00pm',
             '5:00pm'
         ]
+//
 var hourCounter = hours.length;
 setInterval(function() {
     currentDayEl.textContent = moment().format("dddd, MMMM Do YYYY");
@@ -33,7 +34,22 @@ setInterval(function() {
 hours.forEach(function(hour) {
     var timeBlockP = $("<p>")
         .text(hour)
-        .addClass("hour")
+        .addClass("past")
+    //  for (
+    //      var i = 0; If (i < hours.length)
+    //      )
+
+    //     {
+    //         var x = document.getElementsByClassName("past");
+    //         x += '<p id="box-' + i + '">' + hours[i] + '</p>';
+    //     console.log("id loop is working");
+    //        ;
+        
+    //     }    //.attr("hrId")
+    //hoursID.forEach(function(hrID) {
+        //timeBlockP.id=hrID;
+        //console.log("id loop is working")
+    //})
     var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
@@ -42,7 +58,7 @@ hours.forEach(function(hour) {
     var textAreaEl = $("<textarea>")
         .addClass("textArea")
     
-   
+    
     //saveButton.className = `options-${i+1}`;
            
         
@@ -59,13 +75,38 @@ hours.forEach(function(hour) {
 });
 //loadTasks();
 // saves text in text area when save button is clicked
+function loadText() {
+   var textFrom = JSON.parse(localStorage.getItem("hourText"));
+   //console.log(textFrom);
+   $('.textArea').val(textFrom);
+}
+loadText();
+
 $(".saveBtn").click (function() {
+    
     console.log("<button> was clicked");
     var hourText = $(".textArea").val();
     console.log(hourText);
     localStorage.setItem("hourText", JSON.stringify(hourText));
     
   });
+
+   var checkTime = function () {
+        var currentTime = moment().format('h a');
+        console.log(currentTime);
+        // if (currentTime = x) {
+        //     //add class .present to timeblockP
+        // } else (currentime < x) {
+        //     //add class .past to timeblockp
+        // }
+     
+      };
+   checkTime();
+
+  
+// saves text in text area when save button is clicked
+
+
 
 // var createTask = function(hourText) {
 
@@ -76,10 +117,14 @@ $(".saveBtn").click (function() {
 // present .present
 // future .future
 
-var past = moment().subtract(1,"hours")
-var now = moment()
-var future = moment().add(1,"hours")
-console.log(past < now);
-console.log(future > now);
-console.log(past);
+// var past = moment().subtract(1,"hours")
+// var now = moment()
+// var future = moment().add(1,"hours")
+// console.log(past < now);
+// console.log(future > now);
+// console.log(past);
 
+//if x < now then .past
+//if x = now then .preset
+//if x > now then .future
+//need var for each hour
