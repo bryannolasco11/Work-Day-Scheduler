@@ -53,18 +53,10 @@ hours.forEach(function(hour) {
     var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
-    //var hoursLength = hours.length;
-        // for(let hr = 0 ; hr < hoursLength; hr++) {
+    
     var textAreaEl = $("<textarea>")
         .addClass("textArea")
     
-    
-    //saveButton.className = `options-${i+1}`;
-           
-        
-    // var textAreaEl = $("<textarea>")
-    //     .addClass("textArea"+hoursLength)
-
     console.log("my loop is working");
     $(".container").append(timeBlockP);
     
@@ -73,11 +65,10 @@ hours.forEach(function(hour) {
     console.log(hour);  
    
 });
-//loadTasks();
+
 // saves text in text area when save button is clicked
 function loadText() {
    var textFrom = JSON.parse(localStorage.getItem("hourText"));
-   //console.log(textFrom);
    $('.textArea').val(textFrom);
 }
 loadText();
@@ -92,8 +83,17 @@ $(".saveBtn").click (function() {
   });
 
    var checkTime = function () {
-        var currentTime = moment().format('h a');
+        var currentTime = moment().format('h:ssa');
+        var scheduleTime = $("past").text();
+        console.log(scheduleTime);
         console.log(currentTime);
+        if (currentTime=scheduleTime) {
+            $("p").removeClass("past");
+            $("p").addClass("present");
+        } else if (currentTime>scheduleTime) {
+            $("p").removeClass("past");
+            $("p").addClass("future");
+        }
         // if (currentTime = x) {
         //     //add class .present to timeblockP
         // } else (currentime < x) {
