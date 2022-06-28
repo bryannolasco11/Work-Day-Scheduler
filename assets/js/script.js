@@ -60,6 +60,7 @@ hours.forEach(function(hour) {
 //loadTasks();
 // saves text in text area when save button is clicked
 $(".saveBtn").click (function() {
+    
     console.log("<button> was clicked");
     var hourText = $(".textArea").val();
     console.log(hourText);
