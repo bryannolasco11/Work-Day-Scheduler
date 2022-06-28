@@ -34,18 +34,24 @@ hours.forEach(function(hour) {
     var timeBlockP = $("<p>")
         .text(hour)
         .addClass("hour")
-        var saveButton = $("<button>")
+    var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
+    var textAreaEl = $("<textarea>")
+        .addClass("textArea")
+
     console.log("my loop is working");
     $(".container").append(timeBlockP);
+    
+    timeBlockP.append(textAreaEl);
     timeBlockP.append(saveButton);
-    console.log(hour);
-    
-    
+    console.log(hour);  
    
 });
 
+$(".saveBtn").click (function() {
+    console.log("<button> was clicked");
+  });
 //change colors
 //if time is before current time, make class .past
 // present .present
