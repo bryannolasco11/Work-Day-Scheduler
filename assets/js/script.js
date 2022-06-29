@@ -35,21 +35,7 @@ hours.forEach(function(hour) {
     var timeBlockP = $("<p>")
         .text(hour)
         .addClass("past")
-    //  for (
-    //      var i = 0; If (i < hours.length)
-    //      )
-
-    //     {
-    //         var x = document.getElementsByClassName("past");
-    //         x += '<p id="box-' + i + '">' + hours[i] + '</p>';
-    //     console.log("id loop is working");
-    //        ;
-        
-    //     }    //.attr("hrId")
-    //hoursID.forEach(function(hrID) {
-        //timeBlockP.id=hrID;
-        //console.log("id loop is working")
-    //})
+    
     var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
@@ -65,13 +51,13 @@ hours.forEach(function(hour) {
     console.log(hour);  
    
 });
-
+//code to dynamically create uniqueID
 $(document).ready(function() {
-    var myRow =0;
+    var unique =7;
     $(".past").each(function() {
-        //code to dynamically create uniqueID
-        myRow = myRow +1;
-        $(this).attr("id","MyButton"+myRow);
+        
+        unique = unique +1;
+        $(this).attr("id","timeDiv"+unique);
     })
 })
 
@@ -82,6 +68,7 @@ function loadText() {
 }
 loadText();
 
+//$(document).ready(function() {})
 $(".saveBtn").click (function() {
     
     console.log("<button> was clicked");
