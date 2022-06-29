@@ -66,6 +66,15 @@ hours.forEach(function(hour) {
    
 });
 
+$(document).ready(function() {
+    var myRow =0;
+    $(".past").each(function() {
+        //code to dynamically create uniqueID
+        myRow = myRow +1;
+        $(this).attr("id","MyButton"+myRow);
+    })
+})
+
 // saves text in text area when save button is clicked
 function loadText() {
    var textFrom = JSON.parse(localStorage.getItem("hourText"));
