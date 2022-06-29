@@ -22,14 +22,14 @@ var hours = ['8:00am',
             '5:00pm'
         ]
 //
+
+
 var hourCounter = hours.length;
 setInterval(function() {
     currentDayEl.textContent = moment().format("dddd, MMMM Do YYYY");
 },1000);
 
 // 2) display the 10 hour in the workday from 8-5
-
-
 
 hours.forEach(function(hour) {
     var rowDiv = $("<div>")
@@ -46,7 +46,7 @@ hours.forEach(function(hour) {
         .addClass("col-2")
     
     var textAreaEl = $("<textarea>")
-        .addClass("textArea col-8 description past row")
+        .addClass("textArea col-8 description past")
     
     console.log("my loop is working");
     $(".container").append(rowDiv);
@@ -56,36 +56,46 @@ hours.forEach(function(hour) {
     console.log(hour);  
    
 });
-//code to dynamically create uniqueID
-$(document).ready(function() {
-    var unique =7;
-    $(".past").each(function() {
-        
-        unique = unique +1;
-        $(this).attr("id","timeDiv"+unique);
-    })
-});
 
 // saves text in text area when save button is clicked
 function loadText() {
-   var textFrom = JSON.parse(localStorage.getItem("hourText"));
-   $('.textArea').val(textFrom);
+    for (let i = 0; i < 8; i++) {
+    var textFrom = localStorage.getItem(`timeDiv-${i+8}`);
+    if(textFrom){
+        $(`#timeDiv-${i+8} > .textArea`).val(textFrom);
+    }
+    else {
+        $(`#timeDiv-${i+8} > .textArea`).val('');
+    }
+    }
 }
-loadText();
-
-$(document).ready(function () {
-    $(".saveBtn").on("click", function () {
-    
+//code to dynamically create uniqueID
+$(document).ready(function() {
+    $(".row").each(function(i) {
+        var unique = 8 + i;
+        console.log(unique)
+        $(this).attr("id",`timeDiv-${unique}`);
+    })
+    $(".saveBtn").on("click", function (e) {
+        var button = $(this);
+        console.log(button);
         console.log("<button> was clicked");
-        var hourText8 = $(this).siblings(".textarea").val();
-        var time = $(this).parent().attr("timeDiv8");
-        console.log(hourText8);
-        console.log(time);
-        localStorage.setItem(hourText8, time);
+        var hourText = $(this).siblings(".textArea").val();
+        var time = $(this).parent().attr("id");
+        console.log(`
+        Time:${time} 
+        Text:${hourText}`);
+    
+        localStorage.setItem(time, hourText)
+        //console.log(time);
+        // localStorage.setItem("hourText8", hourText8);
     
   })
-  
-})
+  loadText();
+});
+
+
+
 
 // $(".saveBtn").click (function() {
     
@@ -167,13 +177,13 @@ $(document).ready(function () {
 //         localStorage.setItem("hourText17", JSON.stringify(hourText17));
         
 //       });
-
+//Can I use toggleClass here?
    var checkTime = function () {
         var currentTime = moment().format('HH:ss');
         //var scheduleTime = $("timediv8").text();
         //var scheduleTime = moment("08:00",HH:mm");
         //scheduleTime.format("HH:mm")
-        console.log(scheduleTime);
+       // console.log(scheduleTime);
         console.log(currentTime);
         if (currentTime=scheduleTime) {
             $("p").removeClass("past");
@@ -189,7 +199,7 @@ $(document).ready(function () {
         // }
      
       };
-   checkTime();
+   //checkTime();
 
   
 // saves text in text area when save button is clicked
