@@ -178,7 +178,8 @@ $(document).ready(function() {
         
 //       });
 //Can I use toggleClass here?
-   var checkTime = function () {
+   
+    var checkTime = function () {
         var currentTime = moment().format('HH:ss');
         //var scheduleTime = $("timediv8").text();
         //var scheduleTime = moment("08:00",HH:mm");
