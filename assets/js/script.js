@@ -32,22 +32,27 @@ setInterval(function() {
 
 
 hours.forEach(function(hour) {
+    var rowDiv = $("<div>")
+        .addClass("row w-100 time-block");
+        
     var timeBlockP = $("<p>")
         .text(hour)
-        .addClass("past")
+        .addClass("past col-2")
+        
     
     var saveButton = $("<button>")
         .text("save")
         .addClass("saveBtn")
+        .addClass("col-2")
     
     var textAreaEl = $("<textarea>")
-        .addClass("textArea")
+        .addClass("textArea col-8 description past row")
     
     console.log("my loop is working");
-    $(".container").append(timeBlockP);
-    
-    timeBlockP.append(textAreaEl);
-    timeBlockP.append(saveButton);
+    $(".container").append(rowDiv);
+    rowDiv.append(timeBlockP);
+    rowDiv.append(textAreaEl);
+    rowDiv.append(saveButton);
     console.log(hour);  
    
 });
@@ -59,7 +64,7 @@ $(document).ready(function() {
         unique = unique +1;
         $(this).attr("id","timeDiv"+unique);
     })
-})
+});
 
 // saves text in text area when save button is clicked
 function loadText() {
@@ -68,19 +73,106 @@ function loadText() {
 }
 loadText();
 
-//$(document).ready(function() {})
-$(".saveBtn").click (function() {
+$(document).ready(function () {
+    $(".saveBtn").on("click", function () {
     
-    console.log("<button> was clicked");
-    var hourText = $(".textArea").val();
-    console.log(hourText);
-    localStorage.setItem("hourText", JSON.stringify(hourText));
+        console.log("<button> was clicked");
+        var hourText8 = $(this).siblings(".textarea").val();
+        var time = $(this).parent().attr("timeDiv8");
+        console.log(hourText8);
+        console.log(time);
+        localStorage.setItem(hourText8, time);
     
-  });
+  })
+  
+})
+
+// $(".saveBtn").click (function() {
+    
+//     console.log("<button> was clicked");
+//     var hourText9 = $(".textArea").parent('timeDiv9').val();
+//     console.log(hourText9);
+//     localStorage.setItem("hourText9", JSON.stringify(hourText9));
+    
+//   });
+
+//   $(".saveBtn").click (function() {
+    
+//     console.log("<button> was clicked");
+//     var hourText10 = $(".textArea").val();
+//     console.log(hourText10);
+//     localStorage.setItem("hourText10", JSON.stringify(hourText10));
+    
+//   });
+
+//   $(".saveBtn").click (function() {
+    
+//     console.log("<button> was clicked");
+//     var hourText11 = $(".textArea").val();
+//     console.log(hourText11);
+//     localStorage.setItem("hourText11", JSON.stringify(hourText11));
+    
+//   });
+
+//   $(".saveBtn").click (function() {
+    
+//     console.log("<button> was clicked");
+//     var hourText12 = $(".textArea").closest('timeDiv8').val();
+//     console.log(hourText12);
+//     localStorage.setItem("hourText12", JSON.stringify(hourText12));
+
+// });
+
+//   $(".saveBtn").click (function() {
+    
+//     console.log("<button> was clicked");
+//     var hourText13 = $(".textArea").closest('timeDiv13').val();
+//     console.log(hourText13);
+//     localStorage.setItem("hourText13", JSON.stringify(hourText13));
+        
+//     });
+    
+//     $(".saveBtn").click (function() {
+    
+//         console.log("<button> was clicked");
+//         var hourText14 = $(".textArea").val();
+//         console.log(hourText14);
+//         localStorage.setItem("hourText14", JSON.stringify(hourText14));
+        
+//       });
+
+//       $(".saveBtn").click (function() {
+    
+//         console.log("<button> was clicked");
+//         var hourText15 = $(".textArea").val();
+//         console.log(hourText15);
+//         localStorage.setItem("hourText15", JSON.stringify(hourText15));
+        
+//       });
+
+//       $(".saveBtn").click (function() {
+    
+//         console.log("<button> was clicked");
+//         var hourText16 = $(".textArea").val();
+//         console.log(hourText16);
+//         localStorage.setItem("hourText16", JSON.stringify(hourText16));
+        
+//       });
+
+//       $(".saveBtn").click (function() {
+    
+//         console.log("<button> was clicked");
+//         var hourText17 = $(".textArea").val();
+//         console.log(hourText17);
+//         localStorage.setItem("hourText17", JSON.stringify(hourText17));
+        
+//       });
 
    var checkTime = function () {
-        var currentTime = moment().format('h:ssa');
-        var scheduleTime = $("past").text();
+        var currentTime = moment().format('HH:ss');
+        //var scheduleTime = $("timediv8").text();
+        //var scheduleTime = moment("08:00",HH:mm");
+        //scheduleTime.format("HH:mm")
         console.log(scheduleTime);
         console.log(currentTime);
         if (currentTime=scheduleTime) {
@@ -113,14 +205,3 @@ $(".saveBtn").click (function() {
 // present .present
 // future .future
 
-// var past = moment().subtract(1,"hours")
-// var now = moment()
-// var future = moment().add(1,"hours")
-// console.log(past < now);
-// console.log(future > now);
-// console.log(past);
-
-//if x < now then .past
-//if x = now then .preset
-//if x > now then .future
-//need var for each hour
