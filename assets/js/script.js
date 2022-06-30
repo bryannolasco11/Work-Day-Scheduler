@@ -9,7 +9,8 @@
 
 var currentDayEl = document.querySelector("#currentDay");
 var containerEl = document.querySelector(".container");
-
+var currentTime = moment().format('HH');
+console.log(currentTime);
 var hours = ['8:00am', 
             '9:00am', 
             '10:00am', 
@@ -21,7 +22,7 @@ var hours = ['8:00am',
             '4:00pm',
             '5:00pm'
         ]
-//
+
 
 
 var hourCounter = hours.length;
@@ -68,7 +69,9 @@ function loadText() {
         $(`#timeDiv-${i+8} > .textArea`).val('');
     }
     }
-}
+};
+
+
 //code to dynamically create uniqueID
 $(document).ready(function() {
     $(".row").each(function(i) {
@@ -76,6 +79,13 @@ $(document).ready(function() {
         console.log(unique)
         $(this).attr("id",`timeDiv-${unique}`);
     })
+
+    //This gives me a unique ID for my div to change past class
+    // $(".past").each(function(i) {
+    //     var unique = 8 + i;
+    //     console.log(unique)
+    //     $(this).attr("id",`hourDiv-${unique}`);
+    //  })
     $(".saveBtn").on("click", function (e) {
         var button = $(this);
         console.log(button);
@@ -85,51 +95,114 @@ $(document).ready(function() {
         console.log(`
         Time:${time} 
         Text:${hourText}`);
-    
+        console.log(hourText);
         localStorage.setItem(time, hourText)
-        //console.log(time);
-        // localStorage.setItem("hourText8", hourText8);
+       
     
   })
   loadText();
 });
+//getting color change
+// var hourEight = moment().hour(8).format('H');
+// var hourNine = moment().hour(9).format('H');
+// var hourTen = moment().hour(10).format('H');
+// var hourEleven = moment().hour(11).format('H');
+// var hourTwelve = moment().hour(12).format('H');
+// var hourThirteen = moment().hour(13).format('H');
+// var hourFourteen = moment().hour(14).format('H');
+// var hourFifteen = moment().hour(15).format('H');
+// var hourSixteen = moment().hour(16).format('H');
+// var hourSeventeen = moment().hour(17).format('H');
 
-//Can I use toggleClass here?
-    //console.log (hourText);
-    var checkTime = function () {
-        var currentTime = moment().format('HH:ss');
+// if (hourEight == currentTime) {
+//     $("hourDiv-8").removeClass("past").addClass("present");
+// } else if (hourEight < currentTime) {
+//     $("hourDiv-8").removeClass("past").addClass("future");
+// };
+
+// if (hourSeventeen == currentTime) {
+//     $("hourDiv-26").removeClass("past").addClass("present");
+// } else if (hourSeventeen > currentTime) {
+//     $("hourDiv-26").removeClass("past").addClass("future");
+// };
+// loadText();
+//     $(".textarea").each(function() {
+    
+//         var timeBlockText = parseInt($(this).attr("id").val());
+//         console.log("this function is running");
+// });
+// });
+
+
+  
+//     function checkTime ()  {
+//         $(".textarea").each(function() {
+//         var timeBlockText = parseInt($(this).attr("id").val());
+//         console.log("this function is running");
+       
+        
+//     console.log(timeBlockText);
+//         if (currentTime=hourText) {
+//             $("p").removeClass("past");
+//             $("p").addClass("present");
+//         } else if (currentTime>hourText) {
+//             $("p").removeClass("past");
+//             $("p").addClass("future");
+//         }
+        
+// });
+  
+// };
+// checkTime ();
+
+
+
+
+
+
+
+// var checkTime = function () {
+        
+    
+        
+//     })   
+ 
         //var scheduleTime = $("timediv8").text();
         //var scheduleTime = moment("08:00",HH:mm");
         //scheduleTime.format("HH:mm")
        // console.log(scheduleTime);
-        console.log(currentTime);
-        if (currentTime=scheduleTime) {
-            $("p").removeClass("past");
-            $("p").addClass("present");
-        } else if (currentTime>scheduleTime) {
-            $("p").removeClass("past");
-            $("p").addClass("future");
-        }
+        // console.log(currentTime);
+        // if (currentTime=hourText) {
+        //     $("p").removeClass("past");
+        //     $("p").addClass("present");
+        // } else if (currentTime>hourText) {
+        //     $("p").removeClass("past");
+        //     $("p").addClass("future");
+        // }
         // if (currentTime = x) {
         //     //add class .present to timeblockP
         // } else (currentime < x) {
         //     //add class .past to timeblockp
         // }
-     
-      };
-   //checkTime();
+    
+    //   };
+    //   checkTime();
+
+// //Can I use toggleClass here?  I need to grab the text in my <p> with class past which is a child of div with id timeDiv
+    
+    
+//    //checkTime();
 
   
-// saves text in text area when save button is clicked
+// // saves text in text area when save button is clicked
 
 
 
-// var createTask = function(hourText) {
+// // var createTask = function(hourText) {
 
-// }
+// // }
 
-//change colors
-//if time is before current time, make class .past
-// present .present
-// future .future
-
+// //change colors
+// //if time is before current time, make class .past
+// // present .present
+// // future .future
